@@ -4,7 +4,7 @@
     <groupId>com.epay.e9pay</groupId>
     <artifactId>e9pay</artifactId>
     <packaging>war</packaging>
-    <version>1.0.0.SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>E9Pay WebService</name>
 
     <properties>
@@ -41,6 +41,7 @@
         <hamcrest.version>1.3</hamcrest.version>
         <dbunit.version>2.5.2</dbunit.version>
         <h2.version>1.4.187</h2.version>
+        <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
     </properties>
 
 
@@ -345,6 +346,10 @@
                             <user.timezone>Etc/UTC</user.timezone>
                         </systemProperties>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
