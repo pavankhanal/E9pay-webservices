@@ -32,7 +32,7 @@ public abstract class BaseEntityService<E extends Identifiable> implements Entit
      */
     @Override
     @Transactional
-    public List<E> findAll(){
+    public List<E> findAll() {
         return getEntityDao().findAll();
     }
 
@@ -127,6 +127,23 @@ public abstract class BaseEntityService<E extends Identifiable> implements Entit
      */
     protected E doValidateSaveOrUpdate(E entity) {
         return entity;
+    }
+
+    /**
+     * Service method to insert an entity in the data store
+     *
+     * @param entity
+     *     the entity
+     *
+     * @return the entity after it has been updated in the database.
+     */
+    @Override
+    @Transactional
+    public E save(E entity) {
+        E target = doPreSaveOrUpdate(doValidateSaveOrUpdate(entity));
+        getEntityDao().save(target);
+
+        return doPostSaveOrUpdate(target);
     }
 
     /**

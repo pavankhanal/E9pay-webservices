@@ -46,6 +46,16 @@ public interface EntityService<E extends Identifiable> {
     E delete(Long id);
 
     /**
+     * Inserts a given entity.
+     *
+     * @param entity
+     *     The entity to be persisted
+     *
+     * @return The saved entity.
+     */
+    E save(E entity);
+
+    /**
      * Inserts/Updates a given entity.
      *
      * @param entity

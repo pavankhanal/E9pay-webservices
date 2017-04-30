@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -306,7 +307,7 @@ public abstract class BaseRestController<E extends Identifiable, D extends Ident
      */
     @RequestMapping(method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     @ResponseBody
-    public final ResponseEntity<Payload<D>> create(@RequestBody D dto, HttpServletRequest request, UriComponentsBuilder builder) {
+    public final ResponseEntity<Payload<D>> create(@RequestBody @Valid D dto, HttpServletRequest request, UriComponentsBuilder builder) {
         if (!hasCreateAuthority()) {
             throw new RestSecurityException("You do not have permission to perform that action.");
         }
@@ -352,11 +353,12 @@ public abstract class BaseRestController<E extends Identifiable, D extends Ident
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     @ResponseBody
     public final ResponseEntity<Payload<D>> update(
-        @RequestBody D dto,
+        @RequestBody @Valid D dto,
         @PathVariable Long id,
         HttpServletRequest request,
         UriComponentsBuilder builder
     ) {
+
         if (!hasUpdateAuthority()) {
             throw new RestSecurityException("You do not have permission to perform that action.");
         }
@@ -380,31 +382,6 @@ public abstract class BaseRestController<E extends Identifiable, D extends Ident
         UriComponentsBuilder builder
     ) {
 
-        // We need to work around the fact that different entities have different identifier types.
-        final Object dtoId = dto.getId();
-        long longId = -1;
-
-        //noinspection ChainOfInstanceofChecks
-        if (dtoId instanceof Integer) {
-            longId = (Integer) dtoId;
-        }
-        if (dtoId instanceof Long) {
-            longId = (Long) dtoId;
-        }
-
-        if (!id.equals(longId)) {
-            throw RestValidationException.withIssue(
-                "id",
-                String.format(
-                    "The ID in the request [%s: %s] does not match the ID on the URL [%s: %s].",
-                    dto.getId().getClass(),
-                    dto.getId(),
-                    id.getClass(),
-                    id
-                )
-            );
-        }
-
         final DtoMapper<E, D> dtoMapper = getDtoMapper();
 
         final E entity = dtoMapper.toEntity(dto);
@@ -426,7 +403,7 @@ public abstract class BaseRestController<E extends Identifiable, D extends Ident
      */
     @RequestMapping(method = RequestMethod.PUT, produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     @ResponseBody
-    public final ResponseEntity<Payload<List<D>>> updateList(@RequestBody List<D> dtos) {
+    public final ResponseEntity<Payload<List<D>>> updateList(@RequestBody @Valid List<D> dtos) {
         if (!hasUpdateAuthority()) {
             throw new RestSecurityException("You do not have permission to perform that action.");
         }
