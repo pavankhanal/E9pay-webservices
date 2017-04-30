@@ -56,16 +56,21 @@ public class RestExceptionHandler {
         return Response.badRequest(issues);
     }
 
+    //TODO: find a way to know SQLIntegrityConstraintViolationException and resturn different message
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Payload<List<RestValidationIssueDto>>> handleRestRequestException(ConstraintViolationException ex) {
         final List<RestValidationIssueDto> issues = new ArrayList<>();
 
         for (ConstraintViolation issue : ex.getConstraintViolations()) {
+
             issues.add(new RestValidationIssueDto(issue.getPropertyPath().toString(), issue.getMessage()));
         }
 
         return Response.badRequest(issues);
     }
+
+
+
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Payload<List<RestValidationIssueDto>>> handleRestRequestException(HttpMessageNotReadableException ex) {

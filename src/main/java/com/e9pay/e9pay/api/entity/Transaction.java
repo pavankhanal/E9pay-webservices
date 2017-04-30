@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -19,6 +20,7 @@ import org.joda.time.DateTime;
 @Entity
 @Table(name = "transaction")
 @Data
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_transaction")
 public class Transaction extends BaseEntity {
 
     @OneToOne

@@ -2,6 +2,7 @@ package com.e9pay.e9pay.api.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -14,6 +15,7 @@ import com.e9pay.e9pay.api.core.BaseEntity;
  */
 @Entity
 @Table(name = "code")
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_code")
 @Data
 public class Code extends BaseEntity {
 

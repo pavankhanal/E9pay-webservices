@@ -20,13 +20,12 @@ import com.e9pay.e9pay.api.core.Identifiable;
  */
 @Entity
 @Table(name = "domestic_transaction")
+@SequenceGenerator(name = "hd_seq", sequenceName = "seq_domestic_transaction")
 @Data
 public class DomesticTransaction implements Identifiable<Long> {
 
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hd_seq")
     private Long id = 0L;
 
     @Column(name = "e9pay_fee")

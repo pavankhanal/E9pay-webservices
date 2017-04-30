@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -26,6 +27,7 @@ import org.joda.time.LocalDate;
 @Entity
 @Table(name = "member")
 @Data
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_member")
 public class Member extends BaseEntity {
 
     @Column(name = "last_name")

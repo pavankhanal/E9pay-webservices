@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -19,6 +20,7 @@ import com.e9pay.e9pay.api.core.BaseEntity;
  */
 @Entity
 @Table(name = "main_exchnage_rate_commission")
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_main_exchange_rate_commission")
 @Data
 public class MainExchangeRateCommision extends BaseEntity {
 

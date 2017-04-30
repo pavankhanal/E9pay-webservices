@@ -2,6 +2,7 @@ package com.e9pay.e9pay.api.entity;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -15,6 +16,7 @@ import org.joda.time.LocalDate;
  */
 @javax.persistence.Entity
 @Table(name = "program_setting")
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_program_setting")
 @Data
 public class ProgramSetting extends BaseEntity {
 

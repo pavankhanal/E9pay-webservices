@@ -2,6 +2,7 @@ package com.e9pay.e9pay.api.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -17,6 +18,7 @@ import org.joda.time.DateTime;
 @Entity
 @Table(name = "withdrawal_information")
 @Data
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_withdrawal_information")
 public class WithdrawalInformation extends BaseEntity {
 
     @Column(name = "bank_code")
@@ -47,5 +49,4 @@ public class WithdrawalInformation extends BaseEntity {
     @Column(name = "last_successfull_attempt_on")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime lastSuccessfullAttemptOn;
-
 }

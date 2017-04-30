@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -16,6 +17,7 @@ import com.e9pay.e9pay.api.core.BaseEntity;
  */
 @Entity
 @Table(name = "commision_setting")
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_commission_setting")
 @Data
 public class CommisionSetting extends BaseEntity {
 

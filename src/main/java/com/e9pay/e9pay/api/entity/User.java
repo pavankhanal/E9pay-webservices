@@ -1,11 +1,13 @@
 package com.e9pay.e9pay.api.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -16,9 +18,10 @@ import com.e9pay.e9pay.api.core.BaseEntity;
  * @author Vivek Adhikari
  * @since 4/20/2017
  */
-@javax.persistence.Entity
+@Entity
 @Table(name = "e9pay_user")
 @Data
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_user")
 public class User extends BaseEntity {
 
     @Column(name = "user_id", length = 100)
@@ -36,7 +39,7 @@ public class User extends BaseEntity {
     @Column(name = "mobile2", length = 50)
     private String mobile2;
 
-    @Column(length = 100, unique = true)
+    @Column(length = 100, unique = true, nullable = false)
     private String email;
 
     @Lob

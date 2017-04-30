@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -22,6 +23,7 @@ import com.e9pay.e9pay.api.core.BaseEntity;
 @Entity
 @Table(name = "user_authority_group")
 @Data
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_user_authority_group")
 public class UserAuthorityGroup extends BaseEntity {
 
     @Column(name = "auth_id")

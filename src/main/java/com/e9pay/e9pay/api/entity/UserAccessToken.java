@@ -25,16 +25,15 @@ import org.joda.time.LocalDate;
  */
 
 @Entity
-@Table(name = "access_token")
+@Table(name = "user_access_token")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccessToken implements Identifiable<Long> {
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_user_acess_token")
+public class UserAccessToken implements Identifiable<Long> {
 
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hb_seq")
     private Long id = 0L;
 
     @Column(name = "creation_date", updatable = false)
@@ -44,7 +43,6 @@ public class AccessToken implements Identifiable<Long> {
     private String token;
 
     private LocalDate expiry;
-
 
     public boolean isExpired() {
         return false;

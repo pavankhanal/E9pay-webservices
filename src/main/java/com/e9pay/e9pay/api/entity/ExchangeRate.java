@@ -24,12 +24,11 @@ import org.joda.time.DateTime;
 @Entity
 @Table(name = "exchange_rate")
 @Data
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_exchange_rate")
 public class ExchangeRate implements Cloneable, Serializable, Identifiable<Long> {
 
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hb_seq")
     private Long id = 0L;
 
     @Column(name = "currency_code", length = 20)

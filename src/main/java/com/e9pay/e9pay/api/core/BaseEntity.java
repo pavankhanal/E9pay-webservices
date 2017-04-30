@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.SequenceGenerator;
 
 import lombok.Data;
 
@@ -27,9 +26,7 @@ import org.joda.time.DateTime;
 public abstract class BaseEntity implements Cloneable, Serializable, Identifiable<Long> {
 
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hb_seq")
     private Long id = 0L;
 
     @Column(name = "creation_date", updatable = false)

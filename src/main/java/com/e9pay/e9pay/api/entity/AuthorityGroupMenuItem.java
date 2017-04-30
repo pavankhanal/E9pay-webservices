@@ -21,12 +21,12 @@ import com.e9pay.e9pay.api.core.Identifiable;
 @Entity
 @Table(name = "authority_group_menu_item")
 @Data
+@SequenceGenerator(name = "hb_seq", sequenceName = "seq_authority_group_menu_item")
 public class AuthorityGroupMenuItem implements Identifiable<Long> {
 
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hb_seq")
     private Long id = 0L;
 
     @OneToOne
