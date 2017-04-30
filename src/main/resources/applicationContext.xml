@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+    Contains all the beans maintained as root context and needs to be shared with all other child context.
+    -->
+
+    <context:component-scan base-package="com.e9pay.e9pay.api"/>
+
+    <context:property-placeholder location="classpath:db-connection.properties"/>
+
+    <import resource="dataAccessContext.xml"/>
+
+    <bean id="objectMapper" class="com.e9pay.e9pay.api.mapper.HibernateAwareObjectMapper"/>
+
+    <bean id="restConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set>
+                <bean class="com.e9pay.e9pay.api.utils.LocalDateFormatter"/>
+                <bean class="com.e9pay.e9pay.api.utils.DateTimeFormatter"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+
+</beans>

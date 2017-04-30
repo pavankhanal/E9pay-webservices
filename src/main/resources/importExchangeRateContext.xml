@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:batch="http://www.springframework.org/schema/c"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <batch:job id="reportJob">
+        <batch:step id="step1">
+            <batch:tasklet>
+                <batch:chunk reader="exchangeRateCSVReader" writer="exchangeRateWriter"
+                             commit-interval="10">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+
+    <bean id="exchangeRateCSVReader"
+          class="org.springframework.batch.item.file.FlatFileItemReader">
+
+        <!-- Read a csv file -->
+        <property name="resource" value="classpath:cvs/input/report.csv"/>
+
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="lineTokenizer">
+                    <bean
+                        class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="names" value="id,impressions"/>
+                    </bean>
+                </property>
+                <property name="fieldSetMapper">
+                    <bean
+                        class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="report"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+
+    </bean>
+
+
+</beans>

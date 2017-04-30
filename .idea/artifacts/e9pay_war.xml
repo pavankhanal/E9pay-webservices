@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="e9pay:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="e9pay.war">
+      <element id="artifact" artifact-name="e9pay:war exploded" />
+    </root>
+  </artifact>
+</component>

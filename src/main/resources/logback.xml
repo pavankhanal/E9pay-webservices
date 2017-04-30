@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>.logs/e9pay.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>.logs/archive/e9pay.%d.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%5p] [%t %d{yyyy-MM-dd HH:mm:ss z}] \(%X{logId}\) \(%F:%M:%L\) %msg%ex%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%5p] [%t %d{yyyy-MM-dd HH:mm:ss z}] \(%X{logId}\) \(%F:%M:%L\) %msg%ex%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger level="INFO" additivity="false" name="org.springframework">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </logger>
+    <logger level="ERROR" additivity="false" name="org.apache.commons">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </logger>
+    <logger level="ERROR" additivity="false" name="net.sf.ehcache">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </logger>
+    <logger level="ERROR" additivity="false" name="org.hibernate">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </logger>
+    <logger level="ERROR" additivity="false" name="org.hibernate.SQL">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </logger>
+    <logger level="ERROR" additivity="false" name="org.hibernate.type">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </logger>
+    <logger level="ERROR" additivity="false" name="security">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+</configuration>
