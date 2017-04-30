@@ -19,15 +19,28 @@ mvn tomcat7:run
 
 ### Set up Oracle
 ```
-oracle -u root -p
-> CREATE USER 'tutorialuser'@'localhost' IDENTIFIED BY 'tutorialmy5ql';
-> GRANT ALL PRIVILEGES ON *.* TO 'tutorialuser'@'localhost';
-> FLUSH PRIVILEGES;
+Connect Database as Sys or System (user having previlage to create user)
+
+CREATE USER e9pay IDENTIFIED BY password;
+
+GRANT CONNECT TO e9pay;
+
+GRANT CREATE SESSION TO e9pay;
+
+GRANT UNLIMITED TABLESPACE TO e9pay;
+
+grant all privileges to e9pay identified by password;
+```
+
+### Confirm DB Connection Properties
+```
+Database server, url , username and password are configfured here.
+db-connection.properties
 ```
 
 
 ### Use the REST Service
 
 ```
-curl http://localhost:8080/e9pay/users
+curl http://localhost:9090/e9pay/data/v1/users
 ```

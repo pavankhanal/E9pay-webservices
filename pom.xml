@@ -4,25 +4,47 @@
     <groupId>com.epay.e9pay</groupId>
     <artifactId>e9pay</artifactId>
     <packaging>war</packaging>
-    <version>1.0.0</version>
+    <version>1.0.0.SNAPSHOT</version>
     <name>E9Pay WebService</name>
 
     <properties>
-        <java-version>1.7</java-version>
+        <java.version>1.7</java.version>
         <springframework.version>4.2.5.RELEASE</springframework.version>
+        <hibernate.version>4.3.1.Final</hibernate.version>
+        <hibernate-core.version>4.3.6.Final</hibernate-core.version>
         <org.springframework.security.version>4.1.0.RELEASE</org.springframework.security.version>
         <org.springframework.batch.version>3.0.7.RELEASE</org.springframework.batch.version>
+        <spring-orm.version>4.0.6.RELEASE</spring-orm.version>
+        <ojdbc6.version>11.2.0.3</ojdbc6.version>
         <jackson.version>2.5.3</jackson.version>
-        <hibernate.version>4.3.1.Final</hibernate.version>
         <joda-time.version>2.3</joda-time.version>
         <slf4j.version>1.7.21</slf4j.version>
         <logback.version>1.1.7</logback.version>
         <janino.version>2.6.1</janino.version>
         <jsonpath.version>0.8.1</jsonpath.version>
+        <jadira.usertype.version>4.0.0.GA</jadira.usertype.version>
+        <jackson-datatype-hibernate4.version>2.3.0</jackson-datatype-hibernate4.version>
+        <lombok.version>1.16.10</lombok.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <javax.servlet.version>3.1.0</javax.servlet.version>
+        <hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <commons-beanutils.version>1.9.2</commons-beanutils.version>
+        <logback-ext-spring.version>0.1.1</logback-ext-spring.version>
+        <validation-api.version>1.1.0.Final</validation-api.version>
+        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <spring-test-mvc.version>1.0.0.M1</spring-test-mvc.version>
+        <spring-test.version>4.0.1.RELEASE</spring-test.version>
+        <spring-test-dbunit.version>1.2.1</spring-test-dbunit.version>
+        <testng.version>6.10</testng.version>
+        <mockito-core.version>1.10.19</mockito-core.version>
+        <hamcrest.version>1.3</hamcrest.version>
+        <dbunit.version>2.5.2</dbunit.version>
+        <h2.version>1.4.187</h2.version>
     </properties>
 
-    <dependencies>
 
+    <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -86,7 +108,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>4.0.6.RELEASE</version>
+            <version>${spring-orm.version}</version>
         </dependency>
 
         <dependency>
@@ -105,19 +127,19 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.10</version>
+            <version>${lombok.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.3.6.Final</version>
+            <version>${hibernate-core.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.5</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
 
 
@@ -128,14 +150,10 @@
             <version>${joda-time.version}</version>
         </dependency>
 
-        <!-- To map JodaTime with database type -->
-
-
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax.servlet.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -143,7 +161,7 @@
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.3</version>
+            <version>${ojdbc6.version}</version>
             <scope>system</scope>
             <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
         </dependency>
@@ -151,24 +169,23 @@
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>1.0.0.Final</version>
+            <version>${hibernate-jpa.version}</version>
         </dependency>
 
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
-            <version>3.2.2</version>
+            <version>${commons-collections.version}</version>
         </dependency>
 
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>1.9.2</version>
+            <version>${commons-beanutils.version}</version>
         </dependency>
 
 
         <!-- logging -->
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -181,6 +198,7 @@
             <version>${logback.version}</version>
             <!-- <scope>runtime</scope> -->
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
@@ -191,65 +209,65 @@
         <dependency>
             <groupId>org.logback-extensions</groupId>
             <artifactId>logback-ext-spring</artifactId>
-            <version>0.1.1</version>
+            <version>${logback-ext-spring.version}</version>
         </dependency>
 
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
+            <version>${validation-api.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>5.2.4.Final</version>
+            <version>${hibernate-validator.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test-mvc</artifactId>
-            <version>1.0.0.M1</version>
+            <version>${spring-test-mvc.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.0.1.RELEASE</version>
+            <version>${spring-test.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.github.springtestdbunit</groupId>
             <artifactId>spring-test-dbunit</artifactId>
-            <version>1.2.1</version>
+            <version>${spring-test-dbunit.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.10</version>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>1.10.19</version>
+            <version>${mockito-core.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
-            <version>1.3</version>
+            <version>${hamcrest.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
-            <version>1.3</version>
+            <version>${hamcrest.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
@@ -268,34 +286,38 @@
         <dependency>
             <groupId>org.dbunit</groupId>
             <artifactId>dbunit</artifactId>
-            <version>2.5.2</version>
+            <version>${dbunit.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.187</version>
+            <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
-
 
         <dependency>
             <groupId>org.jadira.usertype</groupId>
             <artifactId>usertype.core</artifactId>
-            <version>4.0.0.GA</version>
+            <version>${jadira.usertype.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-hibernate4</artifactId>
-            <version>2.3.0</version>
+            <version>${jackson-datatype-hibernate4.version}</version>
         </dependency>
 
-
-
-
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>spring-test</id>
+            <name>spring-test</name>
+            <url>http://repo.springsource.org/libs-milestone/</url>
+        </repository>
+    </repositories>
 
 
     <build>
@@ -331,8 +353,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
