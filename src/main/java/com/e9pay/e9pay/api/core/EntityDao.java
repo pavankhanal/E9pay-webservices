@@ -36,7 +36,7 @@ public interface EntityDao<E extends Identifiable> {
      *     The entity to save or update.
      */
     void saveOrUpdate(E e);
-hsdhahfhahdfhasfhahfhahfhhahfhahfhahfdhahfhahfhahfhahfhahfhahfhahfhahfhahfhahfhhafhhahfhfh
+
     void lock(LockOptions lockOptions, E e);
 
     /**
