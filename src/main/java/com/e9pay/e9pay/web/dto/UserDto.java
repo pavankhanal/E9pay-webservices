@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDto extends BaseDto<Long> {
-
+shdfafffffffffffffffffffffffffffffffffffffffdddddddddddddddddddd
     private String userId;
 
     private String userName;
